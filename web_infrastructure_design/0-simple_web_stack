@@ -1,0 +1,43 @@
+A simple web infrastructure consists of one server that hosts a website reachable via www.foobar.com.
+
+The domain name foobar.com is configured with a DNS record that points to the server’s IP address (8.8.8.8). The "www" record is a type A record, which maps the domain name to an IP address.
+
+When a user types www.foobar.com into their browser, the request is sent over HTTP/HTTPS using TCP/IP to the server.
+
+The server contains:
+- A web server (Nginx)
+- An application server
+- Application code
+- A database (MySQL)
+
+What is a server:
+A server is a physical or virtual machine that provides services, resources, or data to other computers (clients) over a network.
+
+Role of the domain name:
+The domain name provides a human-readable address that maps to an IP address.
+
+Type of DNS record:
+The "www" record is an A record.
+
+Role of the web server:
+The web server (Nginx) handles incoming HTTP requests and serves static content or forwards requests to the application server.
+
+Role of the application server:
+The application server processes the business logic and generates dynamic content.
+
+Role of the database:
+The database (MySQL) stores and retrieves application data.
+
+Communication protocol:
+The server communicates with the user’s computer using HTTP/HTTPS over TCP/IP.
+
+Issues with this infrastructure:
+
+SPOF (Single Point of Failure):
+If the server goes down, the entire website becomes unavailable.
+
+Downtime during maintenance:
+If the server needs to be restarted (e.g., deployment), the website will be unavailable.
+
+Scalability issues:
+This infrastructure cannot handle high traffic because all requests go to a single server.
