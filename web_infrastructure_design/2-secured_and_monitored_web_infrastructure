@@ -1,0 +1,32 @@
+A secured and monitored web infrastructure includes multiple servers with added security and monitoring components.
+
+The infrastructure includes:
+- 1 load balancer (HAProxy)
+- 2 application servers
+- 3 firewalls
+- 1 SSL certificate (HTTPS)
+- 3 monitoring clients
+
+Why adding firewalls:
+Firewalls are used to filter incoming and outgoing traffic. They protect servers from unauthorized access and attacks by allowing only specific ports and protocols.
+
+Why HTTPS is used:
+HTTPS encrypts the data between the client and the server using SSL/TLS. This ensures confidentiality and protects against man-in-the-middle attacks.
+
+Why monitoring is used:
+Monitoring helps track system performance, detect failures, and alert administrators when something goes wrong.
+
+How monitoring works:
+Monitoring agents (clients) are installed on each server. They collect metrics such as CPU usage, memory usage, disk activity, and network traffic, then send this data to a monitoring service like Sumologic.
+
+How to monitor web server QPS:
+To monitor queries per second (QPS), you can configure monitoring tools or use logs from the web server (e.g., Nginx logs) and analyze request rates over time.
+
+Issues with SSL termination at the load balancer:
+If SSL is terminated at the load balancer, traffic between the load balancer and backend servers is unencrypted, which can expose sensitive data within the internal network.
+
+Issue with a single MySQL server handling writes:
+If only one MySQL server accepts writes, it becomes a bottleneck and a single point of failure for write operations.
+
+Issue with identical servers (web, app, DB together):
+Having all components (web server, application server, and database) on the same server reduces flexibility, scalability, and fault isolation. If one component fails, it can affect the entire server.
