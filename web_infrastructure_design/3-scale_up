@@ -1,0 +1,32 @@
+A scalable web infrastructure is designed to improve performance, availability, and maintainability by separating components and adding redundancy.
+
+The infrastructure includes:
+- 2 load balancers (HAProxy) configured as a cluster
+- Multiple servers with separated roles:
+  - Web server (Nginx)
+  - Application server
+  - Database server (MySQL)
+
+Why adding an additional load balancer:
+Adding a second load balancer removes the single point of failure. If one load balancer fails, the other can continue handling traffic.
+
+Load balancer cluster:
+The two load balancers are configured in a cluster (Active-Passive or Active-Active) to ensure high availability.
+
+Why separating components:
+Each component (web server, application server, database) runs on its own server:
+- Web server handles HTTP requests and static content
+- Application server processes business logic
+- Database server manages data storage
+
+Benefits of separation:
+- Better scalability (each layer can be scaled independently)
+- Improved performance
+- Fault isolation (failure in one component does not affect others directly)
+
+Application server vs web server:
+The web server (Nginx) handles incoming requests and serves static files.
+The application server runs the application logic and generates dynamic responses.
+
+Database:
+The database server is dedicated to storing and managing data, which improves performance and reliability.
