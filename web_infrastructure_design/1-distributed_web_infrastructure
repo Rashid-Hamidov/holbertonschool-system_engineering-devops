@@ -1,0 +1,38 @@
+A distributed web infrastructure consists of multiple servers to improve availability and scalability.
+
+The infrastructure includes:
+- 1 load balancer (HAProxy)
+- 2 servers, each containing:
+  - a web server (Nginx)
+  - an application server
+  - application code
+  - a database (MySQL)
+
+Why adding a load balancer:
+The load balancer distributes incoming traffic across multiple servers to improve performance and ensure high availability.
+
+Load balancing algorithm:
+The load balancer can use a Round Robin algorithm, which distributes requests evenly across all servers in sequence.
+
+Active-Active vs Active-Passive:
+In an Active-Active setup, all servers handle traffic simultaneously.
+In an Active-Passive setup, one server is active while the other is on standby and only takes over if the active server fails.
+
+Database Primary-Replica (Master-Slave):
+The Primary database handles write operations (INSERT, UPDATE, DELETE).
+The Replica database replicates data from the Primary and is mainly used for read operations.
+
+Difference between Primary and Replica:
+The Primary node processes writes and ensures data consistency.
+The Replica node handles read queries and improves performance by reducing load on the Primary.
+
+Single Point of Failure (SPOF):
+- The load balancer is a SPOF (if it fails, the system becomes inaccessible)
+- The Primary database is a SPOF (if it fails, writes cannot be performed)
+
+Security issues:
+- No firewall to protect the servers
+- No HTTPS, so data is transmitted in plain text
+
+No monitoring:
+There is no monitoring system to detect failures, performance issues, or security incidents.
